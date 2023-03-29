@@ -12,4 +12,5 @@ public interface IProductService {
     public Product add(ProductRequest productRequest);
     public Product updatePrice(ProductPriceRequest productPriceRequest);
     public Page<Product> findAll(Pageable pageable);
+
 }

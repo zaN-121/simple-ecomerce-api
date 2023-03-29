@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.Where;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,10 +23,10 @@ public class Product implements Serializable {
     @Column
     private String name;
     @OneToMany(mappedBy = "product")
-    @JsonManagedReference
 //    @Filter(name = "active_price")
     private List<ProductPrice> productPrices;
     @OneToMany(mappedBy = "product")
+    @JsonManagedReference
     private List<ProductCategory> productCategories;
 
 }

@@ -1,5 +1,6 @@
 package com.enigma.livecodeecomerce.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Transaction {
     private Integer quantity;
     @ManyToOne
     @JoinColumn
+    @JsonBackReference
     private User user;
     @ManyToOne
     @JoinColumn

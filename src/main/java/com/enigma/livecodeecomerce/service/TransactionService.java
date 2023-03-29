@@ -6,6 +6,7 @@ import com.enigma.livecodeecomerce.model.Transaction;
 import com.enigma.livecodeecomerce.model.User;
 import com.enigma.livecodeecomerce.model.request.TransactionRequest;
 import com.enigma.livecodeecomerce.model.response.IDailyTransaction;
+import com.enigma.livecodeecomerce.model.response.IMonthlyTransaction;
 import com.enigma.livecodeecomerce.repository.IProductPriceRepository;
 import com.enigma.livecodeecomerce.repository.ITransactionRepository;
 import com.enigma.livecodeecomerce.repository.IUserRepository;
@@ -14,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
+import org.slf4j.IMarkerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +57,8 @@ public class TransactionService {
 
             transaction
                     .setUser(optionalUser.get())
-                    .setProductPrice(optionalProductPrice.get());
+                    .setProductPrice(optionalProductPrice.get())
+                    .setDate(new Date());
 
             transaction = this.transactionRepository.save(transaction);
         } catch (NotFoundException e) {
@@ -69,5 +72,9 @@ public class TransactionService {
 
     public List<IDailyTransaction> getDailyTransaction(Date date) {
         return this.transactionRepository.getDailyTransaction(date);
+    }
+
+    public List<IMonthlyTransaction> getMonthlyTransaction(Date start, Date end) {
+        return this.transactionRepository.getMonthlyTransaction(start, end);
     }
 }

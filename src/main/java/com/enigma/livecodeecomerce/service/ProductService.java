@@ -47,7 +47,7 @@ public class ProductService implements IProductService, IService<Product, Produc
         List<String> categorieIds = productRequest.getCategoryIds();
         ProductCategory productCategory = null;
         Optional<Category> optionalCategory = Optional.empty();
-
+        Optional<Product> productOptional;
         try {
             product = this.productRepository.save(product);
 
@@ -69,12 +69,15 @@ public class ProductService implements IProductService, IService<Product, Produc
                         .setCategory(optionalCategory.get());
 
                this.productCategoryRepository.save(productCategory);
+
             }
+
+            productOptional = this.productRepository.findById(product.getPruductId());
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
 
-        return product;
+        return productOptional.get();
     }
 
     @Override
@@ -109,6 +112,10 @@ public class ProductService implements IProductService, IService<Product, Produc
     @Override
     public Page<Product> findAll(Pageable pageable) {
         return this.findAll(pageable);
+    }
+
+    public List<Product> findAllProduct() {
+        return this.productRepository.findAll();
     }
 
     @Override

@@ -6,9 +6,11 @@ public interface IMonthlyTransaction {
     LocalDate getDate();
     String getBuyer();
     String getProductName();
-    Integer getProductPrice();
+    Integer getPrice();
     Integer getQuantity();
     Integer getSubTotal();
-    Integer getGrandTotal();
-    Integer getTotalTransaction();
+    Integer getGrandTotalPerDay();
+    Integer getTotalTransactionPerDay();
+    Integer getGrandTotalThisMonth();
+    Integer getTotalTransactionThisMonth();
 }

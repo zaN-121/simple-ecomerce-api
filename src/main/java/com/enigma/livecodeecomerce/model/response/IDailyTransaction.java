@@ -11,6 +11,7 @@ public interface IDailyTransaction {
     Integer getPrice();
     Integer getQuantity();
     Integer getSubTotal();
-    Integer getGrandTotal();
+    Integer getGrandTotalToday();
     Integer getTotalTransaction();
+    Integer getTotalTransactionToday();
 }

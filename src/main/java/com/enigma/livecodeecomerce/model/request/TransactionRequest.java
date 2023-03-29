@@ -10,7 +10,6 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class TransactionRequest {
-    private String userId;
     private String productPriceId;
     private Integer quantity;
 

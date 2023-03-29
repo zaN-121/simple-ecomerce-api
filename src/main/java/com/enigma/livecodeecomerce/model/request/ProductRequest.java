@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -13,7 +14,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class ProductRequest {
     private String name;
-    private List<String> categoryIds;
+    private List<String> categoryIds = new ArrayList<>();
     private Integer price;
 
 }
